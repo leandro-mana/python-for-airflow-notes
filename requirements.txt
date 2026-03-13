@@ -1,0 +1,4 @@
+# Additional Python packages installed in the Airflow Docker image.
+# These are available to all DAGs at runtime.
+requests>=2.31
+pandas>=2.2

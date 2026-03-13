@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# mypy / ruff / pytest
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Airflow
+logs/
+airflow.db
+airflow.cfg
+webserver_config.py
+
+# Astronomer
+.astro/
+
+# Reference docs (kept locally, not committed)
+docs/*.pdf
+
+# Roadmap (local planning, not committed)
+ROADMAP.md
+
+# Data files (large datasets kept locally)
+data/*.csv
+data/*.parquet
+!data/.gitkeep
+
+# Docker
+.env
