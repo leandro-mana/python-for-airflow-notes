@@ -8,6 +8,7 @@ Advanced TaskFlow patterns:
 
 These patterns enable scalable, data-driven DAGs.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -25,7 +26,6 @@ from airflow.decorators import dag, task, task_group
     doc_md=__doc__,
 )
 def taskflow_patterns():
-
     # --- Dynamic Task Mapping ---
     # .expand() creates one task instance per item at runtime.
     # The number of tasks isn't known until the upstream task completes.

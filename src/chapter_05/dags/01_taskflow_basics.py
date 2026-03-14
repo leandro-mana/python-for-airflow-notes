@@ -9,6 +9,7 @@ The TaskFlow API (Airflow 2.0+) lets you write DAGs as plain Python functions:
 
 This is the recommended way to write DAGs for Python-heavy workflows.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -26,7 +27,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def taskflow_basics():
-
     @task
     def extract() -> dict:
         """Simulate extracting data from a source system."""

@@ -12,6 +12,7 @@ Patterns:
 This DAG demonstrates the partition-based pattern using Airflow's data intervals.
 The logical_date naturally defines which partition to process.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -29,7 +30,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def incremental_loading():
-
     @task
     def extract_partition(**context) -> list[dict]:
         """

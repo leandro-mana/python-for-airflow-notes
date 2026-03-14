@@ -18,6 +18,7 @@ Trigger rules let you change this behavior:
 
 This DAG demonstrates the most commonly used trigger rules.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -36,7 +37,6 @@ from airflow.operators.empty import EmptyOperator
     doc_md=__doc__,
 )
 def trigger_rules():
-
     @task
     def task_succeeds():
         print("This task succeeds")

@@ -8,6 +8,7 @@ When built-in operators don't fit your use case, create custom ones:
 
 Custom operators promote reuse across DAGs and can be packaged as providers.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -68,7 +69,8 @@ class DataQualityOperator(BaseOperator):
     def execute(self, context):
         self.log.info(
             "Running quality check on %s for date %s",
-            self.table_name, self.check_date,
+            self.table_name,
+            self.check_date,
         )
         # Simulated check
         row_count = 1500
@@ -93,7 +95,6 @@ class DataQualityOperator(BaseOperator):
     doc_md=__doc__,
 )
 def custom_operators():
-
     # Use the custom GreetOperator — note template rendering in name
     greet = GreetOperator(
         task_id="greet",

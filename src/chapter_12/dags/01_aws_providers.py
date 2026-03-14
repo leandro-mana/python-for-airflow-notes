@@ -11,6 +11,7 @@ Airflow's AWS provider package (apache-airflow-providers-amazon) includes:
 This DAG simulates AWS patterns using BashOperator (no real AWS credentials needed).
 In production, install the provider and use the real operators with connections.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -29,7 +30,6 @@ from airflow.operators.bash import BashOperator
     doc_md=__doc__,
 )
 def aws_providers():
-
     @task
     def explain_s3():
         """S3 operator patterns."""

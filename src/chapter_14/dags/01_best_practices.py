@@ -14,6 +14,7 @@ This DAG demonstrates Airflow best practices:
 9. Set start_date to a fixed date (never datetime.now())
 10. Use template variables instead of Variable.get() at module level
 """
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
@@ -49,7 +50,6 @@ DEFAULT_ARGS = {
     max_active_runs=1,  # Prevent overlapping runs
 )
 def best_practices():
-
     @task
     def idempotent_extract(**context) -> list[dict]:
         """

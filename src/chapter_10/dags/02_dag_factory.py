@@ -11,6 +11,7 @@ Pattern:
 
 Warning: Keep the factory code fast — it runs on every scheduler parse.
 """
+
 from __future__ import annotations
 
 from datetime import datetime

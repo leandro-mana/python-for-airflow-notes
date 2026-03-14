@@ -20,6 +20,7 @@ Common template variables:
 Templates are rendered AFTER the scheduler sends the task to a worker,
 so they don't slow down DAG parsing.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -42,7 +43,6 @@ from airflow.operators.bash import BashOperator
     doc_md=__doc__,
 )
 def jinja_templating():
-
     # Basic date templates
     date_info = BashOperator(
         task_id="date_info",
@@ -69,7 +69,7 @@ def jinja_templating():
             "echo 'Today: {{ ds }}' && "
             "echo '7 days ago: {{ macros.ds_add(ds, -7) }}' && "
             "echo '30 days ago: {{ macros.ds_add(ds, -30) }}' && "
-            "echo 'Formatted: {{ macros.ds_format(ds, \"%Y-%m-%d\", \"%d/%m/%Y\") }}'"
+            'echo \'Formatted: {{ macros.ds_format(ds, "%Y-%m-%d", "%d/%m/%Y") }}\''
         ),
     )
 
@@ -77,7 +77,7 @@ def jinja_templating():
     partitioned_query = BashOperator(
         task_id="partitioned_query",
         bash_command=(
-            "echo \"SELECT * FROM {{ params.table_name }} "
+            'echo "SELECT * FROM {{ params.table_name }} '
             "WHERE date = '{{ ds }}' "
             "AND environment = '{{ params.environment }}'\""
         ),

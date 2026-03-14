@@ -18,6 +18,7 @@ Requires: The Triggerer service must be running (it is in our Docker Compose set
 
 This DAG demonstrates the concept using TimeDeltaSensorAsync.
 """
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
@@ -36,7 +37,6 @@ from airflow.sensors.time_delta import TimeDeltaSensorAsync
     doc_md=__doc__,
 )
 def deferrable_example():
-
     # TimeDeltaSensorAsync: Defers to the triggerer instead of occupying a worker.
     # Compare this with TimeDeltaSensor (mode='poke') from DAG 03 — same behavior,
     # but this version doesn't hold a worker slot while waiting.

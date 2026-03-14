@@ -9,6 +9,7 @@ Task groups + dynamic mapping = scalable, organized DAGs:
 This DAG processes multiple data sources, each with its own extract → transform
 → validate group.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -27,7 +28,6 @@ from airflow.decorators import dag, task, task_group
     doc_md=__doc__,
 )
 def dynamic_task_groups():
-
     @task
     def get_sources(**context) -> list[str]:
         """Get data sources from DAG params (overridable at trigger time)."""

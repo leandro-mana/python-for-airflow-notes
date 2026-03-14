@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.12+-blue?logo=python&logoColor=white)
 ![Airflow](https://img.shields.io/badge/Airflow-2.10+-017CEE?logo=apacheairflow&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
-![DAGs](https://img.shields.io/badge/DAGs-~52-green)
+![DAGs](https://img.shields.io/badge/DAGs-44-green)
 ![Chapters](https://img.shields.io/badge/Chapters-14-orange)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 

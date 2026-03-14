@@ -8,6 +8,7 @@ Branching lets a DAG choose which path to follow at runtime:
 
 Skipped tasks show as pink/light purple in the Airflow UI.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -26,7 +27,6 @@ from airflow.operators.empty import EmptyOperator
     doc_md=__doc__,
 )
 def branching():
-
     @task.branch
     def choose_branch(**context) -> str:
         """

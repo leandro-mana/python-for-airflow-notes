@@ -8,6 +8,7 @@ Dynamic task mapping (Airflow 2.3+) creates task instances at runtime:
 
 Use cases: processing files, API pagination, per-customer pipelines.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -25,7 +26,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def dynamic_task_mapping():
-
     @task
     def discover_files() -> list[str]:
         """Discover files to process (number unknown at DAG parse time)."""
@@ -57,9 +57,7 @@ def dynamic_task_mapping():
 
     # .expand() creates one task per file
     # .partial() sets fixed args shared across all mapped instances
-    processed = process_file.partial(output_dir="/opt/airflow/data").expand(
-        filename=files
-    )
+    processed = process_file.partial(output_dir="/opt/airflow/data").expand(filename=files)
 
     aggregate(processed)
 

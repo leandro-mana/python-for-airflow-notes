@@ -9,6 +9,7 @@ Airflow can interact with any REST API:
 For custom APIs, use the requests library in @task functions with
 connection credentials from BaseHook.get_connection().
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -26,7 +27,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def api_providers():
-
     @task
     def call_api() -> dict:
         """Call an external API using requests in a @task function."""

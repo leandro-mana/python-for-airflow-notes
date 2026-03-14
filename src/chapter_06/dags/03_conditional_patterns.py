@@ -6,6 +6,7 @@ Advanced control flow patterns:
 - LatestOnlyOperator: Only run if this is the latest scheduled run (skip during catchup)
 - TriggerDagRunOperator: Trigger another DAG from within a DAG
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -28,7 +29,6 @@ from airflow.operators.trigger_dagrun import TriggerDagRunOperator
     doc_md=__doc__,
 )
 def conditional_patterns():
-
     # LatestOnlyOperator: Skips downstream tasks if this is a backfill/catchup run.
     # Only lets tasks through for the most recent scheduled interval.
     latest_only = LatestOnlyOperator(task_id="latest_only")
@@ -64,7 +64,6 @@ conditional_patterns()
     doc_md="Demonstrates TriggerDagRunOperator to trigger another DAG.",
 )
 def trigger_downstream():
-
     @task
     def prepare():
         print("Preparing data for downstream DAG")

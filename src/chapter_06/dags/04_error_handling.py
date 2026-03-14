@@ -8,6 +8,7 @@ Production DAGs need robust error handling:
 
 Callbacks receive a `context` dict with the full Airflow execution context.
 """
+
 from __future__ import annotations
 
 import logging
@@ -27,7 +28,10 @@ def _on_failure(context: dict) -> None:
 
     LOG.error(
         "FAILURE CALLBACK: task=%s, dag=%s, date=%s, error=%s",
-        task_id, dag_id, execution_date, exception,
+        task_id,
+        dag_id,
+        execution_date,
+        exception,
     )
     # In production: send Slack/PagerDuty/email alert here
 
@@ -63,7 +67,6 @@ def _on_retry(context: dict) -> None:
     doc_md=__doc__,
 )
 def error_handling():
-
     @task
     def reliable_task():
         """This task always succeeds — success callback fires."""

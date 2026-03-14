@@ -10,6 +10,7 @@ Key changes when migrating from Airflow 1.x to 2.x:
 
 This DAG documents the migration patterns with before/after examples.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -27,7 +28,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def migration_patterns():
-
     @task
     def dag_definition_changes():
         """Changes in DAG definition syntax."""
