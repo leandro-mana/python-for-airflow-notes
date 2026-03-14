@@ -23,8 +23,8 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
     # Mount all chapter DAGs into the Airflow DAGs folder
+    # Chapters with DAGs — chapters 02 and 13 are theory-only (no DAGs)
     - ./src/chapter_01/dags:/opt/airflow/dags/chapter_01
-    - ./src/chapter_02/dags:/opt/airflow/dags/chapter_02
     - ./src/chapter_03/dags:/opt/airflow/dags/chapter_03
     - ./src/chapter_04/dags:/opt/airflow/dags/chapter_04
     - ./src/chapter_05/dags:/opt/airflow/dags/chapter_05
@@ -35,7 +35,6 @@ x-airflow-common:
     - ./src/chapter_10/dags:/opt/airflow/dags/chapter_10
     - ./src/chapter_11/dags:/opt/airflow/dags/chapter_11
     - ./src/chapter_12/dags:/opt/airflow/dags/chapter_12
-    - ./src/chapter_13/dags:/opt/airflow/dags/chapter_13
     - ./src/chapter_14/dags:/opt/airflow/dags/chapter_14
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
