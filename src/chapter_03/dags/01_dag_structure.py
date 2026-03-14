@@ -8,6 +8,7 @@ Two ways to define a DAG in Airflow:
 This file shows both patterns side by side. In practice, choose one style
 per project for consistency.
 """
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
@@ -15,7 +16,6 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.decorators import dag, task
 from airflow.operators.bash import BashOperator
-
 
 # ============================================================================
 # Pattern 1: Context Manager (traditional)
@@ -38,7 +38,6 @@ with DAG(
     catchup=False,
     tags=["chapter_03", "dag_structure"],
 ) as dag_cm:
-
     start = BashOperator(task_id="start", bash_command="echo 'Context manager DAG started'")
     end = BashOperator(task_id="end", bash_command="echo 'Context manager DAG finished'")
 

@@ -12,6 +12,7 @@ Two execution modes:
 
 For very long waits, consider deferrable operators instead (Chapter 04, DAG 05).
 """
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
@@ -31,15 +32,14 @@ from airflow.sensors.time_delta import TimeDeltaSensor
     doc_md=__doc__,
 )
 def sensors_example():
-
     # TimeDeltaSensor: Wait for a duration after the data interval start.
     # Useful for waiting for upstream data to land before processing.
     wait_for_data = TimeDeltaSensor(
         task_id="wait_30_seconds",
         delta=timedelta(seconds=30),
         mode="reschedule",  # Free the worker slot while waiting
-        poke_interval=10,   # Check every 10 seconds
-        timeout=120,        # Give up after 2 minutes
+        poke_interval=10,  # Check every 10 seconds
+        timeout=120,  # Give up after 2 minutes
     )
 
     # FileSensor: Wait for a file to appear on the filesystem.
@@ -47,9 +47,9 @@ def sensors_example():
     wait_for_file = FileSensor(
         task_id="wait_for_file",
         filepath="/opt/airflow/data/.gitkeep",  # Use a file we know exists for demo
-        mode="poke",         # Keep the worker slot (fine for short waits)
-        poke_interval=5,     # Check every 5 seconds
-        timeout=60,          # Give up after 1 minute
+        mode="poke",  # Keep the worker slot (fine for short waits)
+        poke_interval=5,  # Check every 5 seconds
+        timeout=60,  # Give up after 1 minute
     )
 
     @task

@@ -8,6 +8,7 @@ Datasets (Airflow 2.4+) enable event-driven DAG scheduling:
 
 This replaces patterns like ExternalTaskSensor for cross-DAG dependencies.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -31,7 +32,6 @@ ORDERS_DATASET = Dataset("s3://warehouse/orders/daily")
     doc_md="Produces data and declares it updated a Dataset.",
 )
 def dataset_producer():
-
     @task(outlets=[ORDERS_DATASET])
     def produce_orders():
         """
@@ -59,7 +59,6 @@ dataset_producer()
     doc_md="Automatically triggered when the orders dataset is updated.",
 )
 def dataset_consumer():
-
     @task
     def consume_orders():
         """This runs automatically when the producer updates the dataset."""

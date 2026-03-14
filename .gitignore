@@ -44,9 +44,9 @@ docs/*.pdf
 ROADMAP.md
 
 # Data files (large datasets kept locally)
-data/*.csv
 data/*.parquet
 !data/.gitkeep
+!data/sample_orders.csv
 
 # Docker
 .env

@@ -14,6 +14,7 @@ Common patterns:
 
 This DAG demonstrates SQL patterns using the local PostgreSQL in our Docker Compose.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -31,7 +32,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def database_providers():
-
     @task
     def explain_sql_operators():
         """SQL operator patterns for databases."""

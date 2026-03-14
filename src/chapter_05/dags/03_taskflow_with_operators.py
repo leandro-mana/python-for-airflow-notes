@@ -10,6 +10,7 @@ In real DAGs you often combine @task functions with traditional operators:
 
 This DAG shows how to mix paradigms seamlessly.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -28,7 +29,6 @@ from airflow.operators.bash import BashOperator
     doc_md=__doc__,
 )
 def taskflow_with_operators():
-
     # Traditional BashOperator
     setup = BashOperator(
         task_id="setup_environment",
@@ -55,7 +55,7 @@ def taskflow_with_operators():
     @task.bash
     def generate_report(summary: dict) -> str:
         """Returns a bash command string to execute."""
-        return f"echo 'Report: {summary[\"count\"]} records, total={summary[\"total\"]}'"
+        return f"echo 'Report: {summary['count']} records, total={summary['total']}'"
 
     # @task.virtualenv: Run in an isolated virtual environment
     @task.virtualenv(

@@ -11,6 +11,7 @@ Re-running for the same date produces the same result.
 
 This DAG uses the local PostgreSQL that ships with our Docker Compose setup.
 """
+
 from __future__ import annotations
 
 import csv
@@ -30,7 +31,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def etl_csv_to_db():
-
     @task
     def extract() -> list[dict]:
         """Extract data from a CSV source (simulated inline for demo)."""
@@ -51,12 +51,14 @@ def etl_csv_to_db():
         """Clean and validate extracted data."""
         cleaned = []
         for record in records:
-            cleaned.append({
-                "id": int(record["id"]),
-                "name": record["name"].strip(),
-                "amount": round(float(record["amount"]), 2),
-                "date": record["date"],
-            })
+            cleaned.append(
+                {
+                    "id": int(record["id"]),
+                    "name": record["name"].strip(),
+                    "amount": round(float(record["amount"]), 2),
+                    "date": record["date"],
+                }
+            )
 
         # Validation
         invalid = [r for r in cleaned if r["amount"] <= 0]

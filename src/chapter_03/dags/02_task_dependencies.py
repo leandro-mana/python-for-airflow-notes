@@ -8,6 +8,7 @@ Airflow provides several ways to define how tasks relate to each other:
 
 This DAG demonstrates all dependency patterns.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -26,7 +27,6 @@ from airflow.models.baseoperator import chain
     doc_md=__doc__,
 )
 def task_dependencies():
-
     # --- Linear chain with >> ---
     @task
     def extract():

@@ -13,6 +13,7 @@ Run this DAG and inspect it in the Airflow UI to see:
 - The Grid view (run history)
 - Task logs (stdout from each operator)
 """
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
@@ -20,7 +21,6 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
-
 
 # Default args apply to every task in this DAG unless overridden.
 # This avoids repeating the same configuration on every task.
@@ -51,7 +51,6 @@ with DAG(
     catchup=False,
     tags=["chapter_01", "basics"],
 ) as dag:
-
     # Task 1: Print the current date using BashOperator
     print_date = BashOperator(
         task_id="print_date",

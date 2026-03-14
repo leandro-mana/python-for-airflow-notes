@@ -7,6 +7,7 @@ across local, S3, GCS, and Azure Blob storage.
 Same code works regardless of storage backend — just change the connection.
 This DAG demonstrates local file operations (same API works for cloud storage).
 """
+
 from __future__ import annotations
 
 import json
@@ -25,7 +26,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def object_storage():
-
     @task
     def write_data(**context) -> str:
         """Write data to local storage (same pattern works for S3/GCS)."""

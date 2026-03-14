@@ -4,6 +4,7 @@ Anti-Patterns — Common Mistakes to Avoid.
 This DAG demonstrates CORRECT patterns alongside explanations of what NOT to do.
 Each task explains a common anti-pattern and shows the fix.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -21,7 +22,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def anti_patterns():
-
     @task
     def anti_pattern_top_level_code():
         """

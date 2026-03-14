@@ -9,11 +9,11 @@ These tests validate ALL DAGs in the project without running them:
 
 Run with: make test
 """
+
 from __future__ import annotations
 
-import os
-from contextlib import contextmanager
 import logging
+from contextlib import contextmanager
 
 import pytest
 from airflow.models import DagBag
@@ -40,9 +40,8 @@ def dag_bag():
 
 def test_no_import_errors(dag_bag):
     """Ensure all DAG files can be imported without errors."""
-    assert not dag_bag.import_errors, (
-        f"DAG import errors:\n"
-        + "\n".join(f"  {k}: {v}" for k, v in dag_bag.import_errors.items())
+    assert not dag_bag.import_errors, "DAG import errors:\n" + "\n".join(
+        f"  {k}: {v}" for k, v in dag_bag.import_errors.items()
     )
 
 
@@ -56,9 +55,7 @@ def test_dags_have_retries(dag_bag):
     """Every DAG should have retries configured in default_args."""
     for dag_id, dag in dag_bag.dags.items():
         retries = dag.default_args.get("retries", 0)
-        assert retries >= 1, (
-            f"DAG '{dag_id}' has retries={retries}, expected >= 1"
-        )
+        assert retries >= 1, f"DAG '{dag_id}' has retries={retries}, expected >= 1"
 
 
 def test_dags_have_description_or_doc(dag_bag):

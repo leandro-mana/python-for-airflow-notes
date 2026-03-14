@@ -10,6 +10,7 @@ Data quality should be a first-class citizen in every pipeline:
 This DAG demonstrates custom data quality checks as tasks.
 In production, consider integrating Great Expectations or Soda.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -28,7 +29,6 @@ from airflow.exceptions import AirflowFailException
     doc_md=__doc__,
 )
 def data_quality():
-
     @task
     def generate_sample_data() -> list[dict]:
         """Simulate data that needs quality checking."""
@@ -48,9 +48,7 @@ def data_quality():
         for i, record in enumerate(data):
             missing = required_columns - set(record.keys())
             if missing:
-                raise AirflowFailException(
-                    f"Record {i}: missing columns {missing}"
-                )
+                raise AirflowFailException(f"Record {i}: missing columns {missing}")
 
         print(f"Schema check PASSED: all {len(data)} records have required columns")
         return True
@@ -89,9 +87,7 @@ def data_quality():
         return len(violations) == 0
 
     @task
-    def quality_report(
-        schema_ok: bool, completeness: dict, ranges_ok: bool
-    ) -> None:
+    def quality_report(schema_ok: bool, completeness: dict, ranges_ok: bool) -> None:
         """Generate a summary quality report."""
         print("=" * 50)
         print("DATA QUALITY REPORT")

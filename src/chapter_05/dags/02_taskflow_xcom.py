@@ -14,6 +14,7 @@ Important XCom limitations:
 - Max size depends on your DB (PostgreSQL: ~1GB, but keep it small)
 - For large data: use object storage (S3/GCS) and pass the path via XCom
 """
+
 from __future__ import annotations
 
 import json
@@ -35,7 +36,6 @@ LOG = logging.getLogger(__name__)
     doc_md=__doc__,
 )
 def taskflow_xcom():
-
     # --- Pattern 1: Traditional XCom (pre-TaskFlow) ---
     @task
     def extract_traditional(**kwargs) -> None:

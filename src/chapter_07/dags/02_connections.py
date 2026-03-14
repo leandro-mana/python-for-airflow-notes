@@ -11,6 +11,7 @@ Environment variable format:
 
 This DAG demonstrates how to use connections in tasks.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -29,7 +30,6 @@ from airflow.hooks.base import BaseHook
     doc_md=__doc__,
 )
 def connections_example():
-
     @task
     def inspect_connection():
         """Retrieve and inspect a connection (using the built-in postgres connection)."""

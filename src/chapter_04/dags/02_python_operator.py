@@ -9,13 +9,13 @@ PythonOperator runs any Python function as a task. Key features:
 For new DAGs, prefer the @task decorator (TaskFlow API) over PythonOperator —
 it's cleaner and handles XCom automatically. This DAG shows both for comparison.
 """
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-
 
 default_args = {
     "owner": "airflow",
@@ -62,7 +62,6 @@ with DAG(
     catchup=False,
     tags=["chapter_04", "operators", "python"],
 ) as dag:
-
     # Basic: pass positional args
     greet_task = PythonOperator(
         task_id="greet_user",

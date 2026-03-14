@@ -12,6 +12,7 @@ Top-level code runs every time the scheduler parses the file (every 30s).
 This creates a DB query on every parse, slowing down the scheduler.
 Always use Variable.get() inside a task or as a Jinja template.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -19,7 +20,6 @@ from datetime import datetime
 from airflow.decorators import dag, task
 from airflow.models import Variable
 from airflow.operators.bash import BashOperator
-
 
 # BAD — DO NOT DO THIS:
 # environment = Variable.get("environment")  # DB query on every DAG parse!
@@ -38,13 +38,10 @@ from airflow.operators.bash import BashOperator
     doc_md=__doc__,
 )
 def variables_example():
-
     # Option 1: Jinja template (BEST — no DB query at parse time)
     print_var = BashOperator(
         task_id="print_var_template",
-        bash_command=(
-            "echo 'Environment: {{ var.value.get(\"environment\", \"development\") }}'"
-        ),
+        bash_command=('echo \'Environment: {{ var.value.get("environment", "development") }}\''),
     )
 
     # Option 2: Variable.get() inside a task (OK — runs at execution time)

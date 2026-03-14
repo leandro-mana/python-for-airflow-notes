@@ -8,13 +8,13 @@ BashOperator executes bash commands in a temporary directory. Key features:
 
 Common use cases: Running scripts, data exports, calling CLI tools, cron migration.
 """
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-
 
 default_args = {
     "owner": "airflow",
@@ -32,7 +32,6 @@ with DAG(
     catchup=False,
     tags=["chapter_04", "operators", "bash"],
 ) as dag:
-
     # Basic command
     print_date = BashOperator(
         task_id="print_date",
@@ -44,14 +43,14 @@ with DAG(
         task_id="templated_command",
         bash_command=(
             "echo 'Logical date: {{ ds }}' && "
-            "echo 'Year: {{ macros.ds_format(ds, \"%Y-%m-%d\", \"%Y\") }}'"
+            'echo \'Year: {{ macros.ds_format(ds, "%Y-%m-%d", "%Y") }}\''
         ),
     )
 
     # Environment variables
     with_env = BashOperator(
         task_id="with_env_vars",
-        bash_command="echo \"Processing for environment: $ENVIRONMENT, region: $REGION\"",
+        bash_command='echo "Processing for environment: $ENVIRONMENT, region: $REGION"',
         env={"ENVIRONMENT": "development", "REGION": "us-east-1"},
         append_env=True,  # Inherit existing env vars + add these
     )

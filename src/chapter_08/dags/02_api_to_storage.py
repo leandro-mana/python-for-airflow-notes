@@ -9,6 +9,7 @@ This DAG demonstrates:
 - Writing results to local storage (in production: S3/GCS)
 - Passing file paths via XCom (not the data itself — keep XCom small!)
 """
+
 from __future__ import annotations
 
 import json
@@ -27,7 +28,6 @@ from airflow.decorators import dag, task
     doc_md=__doc__,
 )
 def api_to_storage():
-
     @task
     def extract_from_api(**context) -> list[dict]:
         """
@@ -55,13 +55,15 @@ def api_to_storage():
         """Enrich and filter the extracted data."""
         enriched = []
         for post in posts:
-            enriched.append({
-                "id": post["id"],
-                "title": post["title"][:50],
-                "title_length": len(post["title"]),
-                "body_preview": post["body"][:100],
-                "user_id": post["userId"],
-            })
+            enriched.append(
+                {
+                    "id": post["id"],
+                    "title": post["title"][:50],
+                    "title_length": len(post["title"]),
+                    "body_preview": post["body"][:100],
+                    "user_id": post["userId"],
+                }
+            )
 
         print(f"Transformed {len(enriched)} records")
         return enriched

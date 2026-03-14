@@ -14,6 +14,7 @@ Airflow components:
 
 Run this DAG and read the logs of each task to learn what each component does.
 """
+
 from __future__ import annotations
 
 from datetime import datetime

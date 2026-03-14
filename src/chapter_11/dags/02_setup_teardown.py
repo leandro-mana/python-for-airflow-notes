@@ -9,6 +9,7 @@ Setup/teardown tasks (Airflow 2.7+) guarantee cleanup runs even if work tasks fa
 Use cases: Spinning up/down clusters, creating/dropping temp tables,
 acquiring/releasing locks.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -26,7 +27,6 @@ from airflow.decorators import dag, setup, task, teardown
     doc_md=__doc__,
 )
 def setup_teardown_example():
-
     @setup
     def create_cluster() -> dict:
         """Setup: Create a compute cluster (simulated)."""

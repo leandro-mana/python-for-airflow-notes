@@ -8,6 +8,7 @@ Airflow ships with many operators beyond Bash and Python:
 
 These operators help you build expressive DAG control flow.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -36,7 +37,6 @@ def _check_condition() -> bool:
     doc_md=__doc__,
 )
 def other_operators():
-
     # EmptyOperator: A no-op task used for DAG structure.
     # Great for start/end markers and join points.
     start = EmptyOperator(task_id="start")

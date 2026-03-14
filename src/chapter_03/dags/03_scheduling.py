@@ -11,6 +11,7 @@ Airflow scheduling concepts:
 Key insight: A @daily DAG with start_date=Jan 1 runs at the END of Jan 1
 (i.e., midnight Jan 2), processing data FOR Jan 1.
 """
+
 from __future__ import annotations
 
 from datetime import datetime
